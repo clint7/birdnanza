@@ -33,12 +33,21 @@ function create(){
   foodBowl = 10
   waterBowl = 10
 
+  kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-idle.png');
+
+  feedButton = game.add.button(game.world.centerX - 95, 180, 'kiwi_sprite', addFood, this, 'Kiwi-idle.png', 'Kiwi-dead.png', 'Kiwi-angry.png');
 
   happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
   foodBowlText = game.add.text(16, 32, 'food bowl: ' + foodBowl, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
   waterBowlText = game.add.text(16, 48, 'water bowl: ' + waterBowl, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
   kiwi = new Pet();
 }
+
+function addFood(){
+  foodBowl = 100;
+  waterBowl = 100;
+}
+
 
 function update(){
 
@@ -61,7 +70,7 @@ function update(){
   }
 
   if (kiwi.happiness < 45) { 
-    kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-dead.png');
+    kiwi_sprite.frameName = 'Kiwi-dead.png';
   }
 
 }
