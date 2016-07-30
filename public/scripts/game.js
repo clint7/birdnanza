@@ -1,5 +1,6 @@
 var kiwi;
 var foodBowl;
+var waterBowl;
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
@@ -9,6 +10,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight,
 // variables yo
 var happinessText; //Phaser.text object that displays the text
 var foodBowlText;
+var waterBowlText;
 // variables yo
 
 function preload(){
@@ -22,9 +24,11 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70
+  waterBowl = 80
 
-  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
-  foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
+  foodBowlText = game.add.text(16, 32, 'food bowl: ' + foodBowl, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
+  waterBowlText = game.add.text(16, 48, 'water bowl: ' + waterBowl, { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
   kiwi = new Pet();
 }
 
@@ -41,8 +45,11 @@ function update(){
     console.log("actionLoop");
     kiwi.update();
     foodBowl = kiwi.eat(foodBowl)
+    waterBowl = kiwi.eat(waterBowl)
+
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
+    waterBowlText.text = 'water bowl: ' + waterBowl;
   }
 }
 
@@ -61,7 +68,6 @@ function Pet(){
   this.update = function(){
     this.happiness -= 5;
     this.hunger += 10;
-
   }
 
   this.eat = function(food){
@@ -96,6 +102,35 @@ function Pet(){
 
     return food;
   }
+
+  this.drink = function(water){
+      var drink = 0;
+
+      if (water == 0){
+        this.thirsty += 5
+        this.happiness -= 30;
+        return water;
+      }
+
+      if (water < 10) {
+        drink = water;
+        water -= water
+      } else {
+        drink = 10
+        water = water - 10;
+      }
+
+      if (this.thirsty < drink) {
+        drink = drink - this.thirsty
+        this.happiness += 40;
+      } else {
+        this.thirsty -= drink
+        this.happiness += 10;
+        this.poop += 5;
+      }
+
+      return water;
+    }
 
   // this.drink = function(water){
   //   if (water < 10) {
