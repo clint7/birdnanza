@@ -11,11 +11,14 @@ var feedButton;
 var waterButton;
 var playButton;
 
+var waterBowl;
+
 var ticks;
 
 var backgound;
 var kiwi_sprite;
 var smoke;
+var worm;
 
 
 
@@ -28,9 +31,13 @@ function preload(){
 
   game.load.image('background', '../img/birdnanza_bg.png');
 
+  // game.load.atlasJSONHash('water_bowl', '../img/water_bowl.png', '../img/water_bowl.json');
+
+
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
   game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
   game.load.atlasJSONHash('buttons', '../img/buttons.png', '../img/buttons.json');
+  game.load.atlasJSONHash('worm', '../img/worm.png', '../img/worm.json');
 
   ticks = "eat";
 }
@@ -39,19 +46,27 @@ function create(){
   // add them to the page
   // game.add.sprite(10, 100, 'logo');
 
-  background = game.add.sprite(0, 0, 'background');
-  background.height = game.height;
+  background = game.add.sprite(0, -200, 'background');
+  // background.height = game.height;
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70;
   waterBowl = 70;
 
 
-  kiwi_sprite = game.add.sprite(game.world.centerX - 95, 180, 'kiwi_sprite', 'Kiwi-idle.png');
-  
+  kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
+  worm_sprite = game.add.sprite(game.world.centerX + 95, 440, 'worm', 'worm-1.png');
+
+  walk = worm_sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 5, true, false);
+  worm_sprite.animations.play('walking');
+
+
   // smoke = game.add.sprite(64, 180, 'smoke', 'Smoke1.png');
   // smoke.animations.add('blow');
   // smoke.animations.play('blow', 20, false);
+
+
+
 
   feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'feed.png', 'feed.png', 'feed.png');
   waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'water.png', 'water.png', 'water.png');
@@ -61,6 +76,8 @@ function create(){
   foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
   waterBowlText = game.add.text(16, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
   ageText = game.add.text(16, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
+
+
   kiwi = new Pet();
 }
 
