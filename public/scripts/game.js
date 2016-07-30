@@ -28,6 +28,7 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70;
+  waterBowl = 70;
 
   kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-idle.png');
 
@@ -61,6 +62,7 @@ function update(){
       // add poop to screen
     }
     foodBowl = kiwi.eat(foodBowl)
+    waterBowl = kiwi.drink(waterBowl)
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
     waterBowlText.text = 'water bowl: ' + waterBowl;
