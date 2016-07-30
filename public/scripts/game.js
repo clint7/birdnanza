@@ -48,6 +48,11 @@ function update(){
     foodBowl = kiwi.eat(foodBowl)
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
+    waterBowlText.text = 'water bowl: ' + waterBowl;
+  }
+
+  if (kiwi.happiness < 45) { 
+    kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-dead.png');
   }
 }
 
