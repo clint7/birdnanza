@@ -18,8 +18,13 @@ var ticks;
 var backgound;
 var kiwi_sprite;
 var smoke;
-var worm;
 
+
+//worm vars
+var worms = [];
+var worm;
+var wormMove = true;
+var leftRight = 0
 
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
@@ -53,12 +58,15 @@ function create(){
   foodBowl = 70;
   waterBowl = 70;
 
-
   kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
-  worm_sprite = game.add.sprite(game.world.centerX + 95, 440, 'worm', 'worm-1.png');
+  // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
 
-  walk = worm_sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 5, true, false);
-  worm_sprite.animations.play('walking');
+  // worms.push(new Worm(worm_sprite));
+  // worm_sprite.anchor.setTo(.5, .5);
+  
+
+  // worm_sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 3, true, false);
+  // worm_sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 
 
   // smoke = game.add.sprite(64, 180, 'smoke', 'Smoke1.png');
@@ -83,6 +91,11 @@ function create(){
 
 function addFood(){
   foodBowl = 100;
+
+  for (var i = 0; worms.length < 3; i++) {
+    randomSpawn = Math.round((Math.random() * (60 - 1) + 1));
+    worms.push(new Worm(game.add.sprite(game.world.centerX - 30 + randomSpawn, 520, 'worm', 'worm-1.png')));
+  }
 }
 
 function addWater(){
@@ -94,6 +107,16 @@ function update(){
   if (kiwi.petState == "dead") {
     return;
   }
+
+    // worm_sprite.animations.play('walking');
+
+
+  //worm movement
+  for (var i = worms.length - 1; i >= 0; i--) {
+    doWorm(worms[i])
+  }
+  // doWorm();
+
 
   // each tick update happens by 10 and write to text on screen
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
@@ -140,6 +163,50 @@ function update(){
     kiwi_sprite.frameName = 'Kiwi-dead.png';
     kiwi.petState = 'dead'
   }
+}
+
+function doWorm(worm){
+  var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
+  if(!worm.wormMove){
+    console.log(worm)
+    // console.log(worm.leftRight);
+    if (worm.leftRight > 2){
+      worm.sprite.scale.x = -1;
+      if (worm.sprite.x < window.screen.availWidth - 60){
+        worm.sprite.x += 1
+      } else {
+        worm.leftRight = 1;
+      }
+    } else {
+      worm.sprite.scale.x = 1;
+      if (worm.sprite.x > 15){
+        worm.sprite.x -= 1
+      } else {
+        worm.leftRight = 3;
+      }
+    }
+  }
+
+  if (actionLoop){
+    if (worm.wormMove) {
+      worm.wormMove = false;
+      worm.leftRight = Math.round((Math.random() * (4 - 1) + 1));
+      worm.sprite.animations.play('walking');
+    } else {
+      worm.wormMove = true;
+      worm.sprite.animations.play('stoped');
+    }
+  }
+
+}
+
+function Worm(sprite){
+  this.wormMove = true;
+  this.leftRight = 0;
+  this.sprite = sprite;
+  this.sprite.anchor.setTo(.5, .5);
+  this.sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 3, true, false);
+  this.sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 }
 
 function Pet(){
