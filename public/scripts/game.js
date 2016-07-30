@@ -32,6 +32,7 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70;
+  waterBowl = 70;
 
   kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-idle.png');
 
@@ -51,6 +52,11 @@ function addFood(){
 
 function update(){
 
+
+  if (kiwi.petState == "dead") {
+    return;
+  }
+
   // add them to the page
   // game.add.sprite(10, 100, 'logo');
   // game.stage.backgroundColor = '#e7e7e7';
@@ -69,25 +75,35 @@ function update(){
 
     switch(ticks) {
     case 'eat':
+        var grow = (10 > (Math.random() * (1000 - 1) + 1));
+        if (grow) {
+          kiwi.growUp();
+        }
         foodBowl = kiwi.eat(foodBowl)
         ticks = 'drink';
         break;
     case 'drink':
+        waterBowl = kiwi.drink(waterBowl)
         ticks = 'other'
         break;
     case 'other':
         ticks = 'eat'
+        break;
+        //some thing else happens here // sleeps maybe? wakes up on next actionLoop?
     }
 
+    if (kiwi.happiness < 100){
+      kiwi.happiness == 100;
+    }
 
-    
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
     waterBowlText.text = 'water bowl: ' + waterBowl;
   }
 
-  if (kiwi.happiness < 45) { 
+  if (kiwi.happiness < 5) { 
     kiwi_sprite.frameName = 'Kiwi-dead.png';
+    kiwi.petState = 'dead'
   }
 }
 
@@ -149,5 +165,39 @@ function Pet(){
     }
 
     return food;
+  }
+
+  this.drink = function(water){
+    var drink = 0;
+
+    if (water == 0){
+      this.thirsty += 5
+      this.happiness -= 30;
+      return water;
+    }
+
+    if (water < 10) {
+      drink = water;
+      water -= water
+    } else {
+      drink = 10
+      water = water - 10;
+    }
+
+    if (this.thirsty < drink) {
+      drink = drink - this.thirsty
+      this.happiness += 40;
+    } else {
+      this.thirsty -= drink
+      this.happiness += 10;
+      this.poop += 5;
+    }
+
+    return water;
+  }
+
+  this.growUp = function(){
+    //do growing stuff here
+    this.age += 1;
   }
 }
