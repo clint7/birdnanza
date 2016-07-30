@@ -11,12 +11,11 @@ var feedButton;
 var waterButton;
 var playButton;
 
-var waterBowl;
-
 var ticks;
 
 var backgound;
 var kiwi_sprite;
+var water_bowl_sprite;
 var smoke;
 var worm;
 
@@ -33,7 +32,7 @@ function preload(){
 
   // game.load.atlasJSONHash('water_bowl', '../img/water_bowl.png', '../img/water_bowl.json');
 
-
+  game.load.atlasJSONHash('bowl', '../img/bowl.png', '../img/bowl.json');
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
   game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
   game.load.atlasJSONHash('buttons', '../img/buttons.png', '../img/buttons.json');
@@ -56,6 +55,7 @@ function create(){
 
   kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   worm_sprite = game.add.sprite(game.world.centerX + 95, 440, 'worm', 'worm-1.png');
+  water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
 
   walk = worm_sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 5, true, false);
   worm_sprite.animations.play('walking');
@@ -139,6 +139,15 @@ function update(){
   if (kiwi.happiness < 5) { 
     kiwi_sprite.frameName = 'Kiwi-dead.png';
     kiwi.petState = 'dead'
+  }
+
+
+  if (waterBowl < 20){
+    water_bowl_sprite.frameName = 'Bowl-1.png'
+  } else if (waterBowl > 20 &&  waterBowl < 60) {
+    water_bowl_sprite.frameName = 'Bowl-2.png'
+  } else if (waterBowl > 61) {
+    water_bowl_sprite.frameName = 'Bowl-3.png'
   }
 }
 

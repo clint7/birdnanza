@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "Bowl-1.png",
+	"frame": {"x":0,"y":0,"w":126,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":87},
+	"sourceSize": {"w":126,"h":87}
+},
+{
+	"filename": "Bowl-2.png",
+	"frame": {"x":126,"y":0,"w":126,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":87},
+	"sourceSize": {"w":126,"h":87}
+},
+{
+	"filename": "Bowl-3.png",
+	"frame": {"x":252,"y":0,"w":126,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":87},
+	"sourceSize": {"w":126,"h":87}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bowl.png",
+	"format": "RGBA8888",
+	"size": {"w":378,"h":87},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ce7326f4f3a91a205b1d7e65f9682a1f:7f85514f163e292d11626377a2b12572:436b0b2c93de439e28520b05564ef647$"
+}
+}
