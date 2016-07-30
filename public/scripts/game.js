@@ -5,7 +5,6 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight,
 
 // variables yo
 var happinessText; //Phaser.text object that displays the text
-var happiness = 50; //variable for bird happiness
 // variables yo
 
 function preload(){
@@ -19,25 +18,25 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
 
-  happinessText = game.add.text(16, 16, 'happiness: ' + happiness, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  happinessText = game.add.text(16, 16, 'happiness: ', { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
 }
 
 function update(){
+
   // add them to the page
   // game.add.sprite(10, 100, 'logo');
   // game.stage.backgroundColor = '#e7e7e7';
 
   // each tick update happines by 10 and write to text on screen
-  happiness += 10;
-  happinessText.text = 'happiness: ' + happiness;
+  happinessText.text = 'happiness: ' + Pet.getType
 }
 
 function Pet(){
   this.petType = 'kiwi';
   this.petState = 'egg';
-  this.happyness = 50;
+  this.happiness = 50;
   this.hunger = 0;
-  this.thirsty = 0;
+  this.thirst = 0;
   this.age = 0;
   this.poop = 0;
   this.getType = function(){
@@ -61,10 +60,34 @@ function Pet(){
       food = food - 10;
     }
 
+    //increase happiness
+    //increase poop
+    //increase thirst
+
     return food;
   }
 
   this.drink = function(water){
+    if (water < 10) {
+      drink = thirst;
+      thirst = thirst - drink
+    } else {
+      drink = 10
+      thirst = thirst - 10;
+    }
 
+    if (thirst < 10) {
+      drink = drink - thirst
+      thirst = 0;
+    } else {
+      thirst = thirst - 10
+      water = water - 10;
+    }
+
+    //increase poop
+    //increase happiness
+
+    return water;
   }
+
 }
