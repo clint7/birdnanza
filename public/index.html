@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/scripts/phaser.min.js"></script>
+</head>
+<body>
+<div id="sweetGame" > </div>
+
+<script type="text/javascript">
+	var game = new Phaser.Game(800, 600, 
+                               Phaser.AUTO, 'sweetGame', {
+                   preload: preload, create: create, update: update
+               });
+
+	function preload(){
+		// load all sprites and assets here
+        // game.load.image('logo', '/images/logo.png');  
+  }
+
+  function create(){
+    	// add them to the page
+        // game.add.sprite(10, 100, 'logo');
+        // game.stage.backgroundColor = '#e7e7e7';
+  }
+
+  function update(){
+      // add them to the page
+        // game.add.sprite(10, 100, 'logo');
+        // game.stage.backgroundColor = '#e7e7e7';
+  }
+</script>
+
+</body>
+</html>
