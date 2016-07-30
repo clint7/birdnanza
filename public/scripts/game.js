@@ -18,7 +18,9 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
 
-  happinessText = game.add.text(16, 16, 'happiness: ', { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  happinessText = game.add.text(16, 16, 'Happiness: ', { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
+  hungerText = game.add.text(16, 32, 'Hunger: ', { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage
+  thirstText = game.add.text(16, 48, 'Thirst: ', { fontSize: '16px', fill: '#e7e7e7' }); //create text object, and place on stage  
 }
 
 function update(){
@@ -28,7 +30,9 @@ function update(){
   // game.stage.backgroundColor = '#e7e7e7';
 
   // each tick update happines by 10 and write to text on screen
-  happinessText.text = 'happiness: ' + Pet.getType
+  happinessText.text = 'Happiness: '
+  hungerText.text = 'Hunger: '
+  thirstText.text = 'Happiness: '
 }
 
 function Pet(){
@@ -89,5 +93,6 @@ function Pet(){
 
     return water;
   }
+
 
 }
