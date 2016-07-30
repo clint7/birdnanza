@@ -14,5 +14,9 @@
 	outline: none;
 }
 
+.logo {
+	max-width: 300px;
+}
+
 /*=====  End of site header  ======*/
 
