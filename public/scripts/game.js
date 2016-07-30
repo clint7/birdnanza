@@ -9,7 +9,6 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight,
 // variables yo
 var happinessText; //Phaser.text object that displays the text
 var foodBowlText;
-var happiness = 50; //variable for bird happiness
 // variables yo
 
 function preload(){
@@ -22,16 +21,15 @@ function create(){
   // game.add.sprite(10, 100, 'logo');
 
   game.stage.backgroundColor = '#000'; //set background colour
-
   foodBowl = 70
 
-  happinessText = game.add.text(16, 16, 'happiness: ' + happiness, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
   foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
   kiwi = new Pet();
-
 }
 
 function update(){
+
   // add them to the page
   // game.add.sprite(10, 100, 'logo');
   // game.stage.backgroundColor = '#e7e7e7';
@@ -53,7 +51,7 @@ function Pet(){
   this.petState = 'egg';
   this.happiness = 50;
   this.hunger = 0;
-  this.thirsty = 0;
+  this.thirst = 0;
   this.age = 0;
   this.poop = 0;
   this.getType = function(){
@@ -99,7 +97,21 @@ function Pet(){
     return food;
   }
 
-  this.drink = function(water){
+  // this.drink = function(water){
+  //   if (water < 10) {
+  //     drink = thirst;
+  //     thirst = thirst - drink
+  //   } else {
+  //     drink = 10
+  //     thirst = thirst - 10;
+  //   }
 
-  }
+  //   if (thirst < 10) {
+  //     drink = drink - thirst
+  //     thirst = 0;
+  //   } else {
+  //     thirst = thirst - 10
+  //     water = water - 10;
+  //   return water;
+  // }
 }

@@ -1,0 +1,18 @@
+/*===================================
+=            site header            =
+===================================*/
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-brand {
+	height: auto;
+}
+
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+	outline: none;
+}
+
+/*=====  End of site header  ======*/
+
