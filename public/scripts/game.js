@@ -61,7 +61,7 @@ function update(){
   }
 
   if (kiwi.happiness < 45) { 
-    kiwi_sprite = game.sprite(32, 180, 'kiwi_sprite', 'Kiwi-dead.png');
+    kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-dead.png');
   }
 
 }
