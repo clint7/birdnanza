@@ -1,3 +1,6 @@
+var kiwi;
+var foodBowl;
+
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
@@ -5,6 +8,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight,
 
 // variables yo
 var happinessText; //Phaser.text object that displays the text
+var foodBowlText;
 var happiness = 50; //variable for bird happiness
 // variables yo
 
@@ -19,7 +23,12 @@ function create(){
 
   game.stage.backgroundColor = '#000'; //set background colour
 
+  foodBowl = 70
+
   happinessText = game.add.text(16, 16, 'happiness: ' + happiness, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  kiwi = new Pet();
+
 }
 
 function update(){
@@ -28,37 +37,63 @@ function update(){
   // game.stage.backgroundColor = '#e7e7e7';
 
   // each tick update happines by 10 and write to text on screen
-  happiness += 10;
-  happinessText.text = 'happiness: ' + happiness;
+  var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
+
+  if (actionLoop){
+    console.log("actionLoop");
+    kiwi.update();
+    foodBowl = kiwi.eat(foodBowl)
+    happinessText.text = 'happiness: ' + kiwi.happiness;
+    foodBowlText.text = 'food bowl: ' + foodBowl;
+  }
 }
 
 function Pet(){
   this.petType = 'kiwi';
   this.petState = 'egg';
-  this.happyness = 50;
+  this.happiness = 50;
   this.hunger = 0;
   this.thirsty = 0;
   this.age = 0;
   this.poop = 0;
   this.getType = function(){
     return this.petType;
-  } 
+  }
+
+  this.update = function(){
+    this.happiness -= 5;
+    this.hunger += 10;
+
+  }
 
   this.eat = function(food){
+    var feed = 0;
+
+    if (food == 0){
+      this.hunger += 10
+      this.thirsty += 5
+      this.happiness -= 30;
+      return food;
+    }
+
     if (food < 10) {
       feed = food;
-      food = food - feed
+      food -= food
     } else {
       feed = 10
       food = food - 10;
     }
 
-    if (hunger < 10) {
-      feed = feed - hunger
-      hunger = 0;
+    if (this.hunger < feed) {
+      feed = feed - this.hunger
+      this.hunger = 0;
+      this.happiness += 40;
+      this.thirsty += 5;
     } else {
-      hunger = hunger - 10
-      food = food - 10;
+      this.hunger -= feed
+      this.happiness += 10;
+      this.thirsty += 5;
+      this.poop += 10;
     }
 
     return food;
