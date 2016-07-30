@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "Kiwi-angry.png",
+	"frame": {"x":0,"y":0,"w":206,"h":188},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":188},
+	"sourceSize": {"w":206,"h":188}
+},
+{
+	"filename": "Kiwi-dead.png",
+	"frame": {"x":0,"y":188,"w":206,"h":193},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":193},
+	"sourceSize": {"w":206,"h":193}
+},
+{
+	"filename": "Kiwi-excite.png",
+	"frame": {"x":0,"y":381,"w":206,"h":188},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":188},
+	"sourceSize": {"w":206,"h":188}
+},
+{
+	"filename": "Kiwi-hungry.png",
+	"frame": {"x":0,"y":569,"w":206,"h":188},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":188},
+	"sourceSize": {"w":206,"h":188}
+},
+{
+	"filename": "Kiwi-idle.png",
+	"frame": {"x":0,"y":757,"w":188,"h":188},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":188},
+	"sourceSize": {"w":188,"h":188}
+},
+{
+	"filename": "Kiwi-play.png",
+	"frame": {"x":0,"y":945,"w":206,"h":188},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":206,"h":188},
+	"sourceSize": {"w":206,"h":188}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "kiwi-sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":206,"h":1133},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:fb5382265dbf6c07996c963aa26ad8f3:fa7c28c9cd2b575c7014cd8ea3c09477:232cec7d81ee66dab200f51a189a13ed$"
+}
+}
