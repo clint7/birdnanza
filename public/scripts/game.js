@@ -10,6 +10,8 @@ var waterBowlText;
 var feedButton;
 var waterButton;
 
+var ticks;
+
 var kiwi_sprite;
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
@@ -20,6 +22,8 @@ function preload(){
   // load all sprites and assets here
   // game.load.image('logo', '/images/logo.png');  
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
+
+  ticks = "eat";
 }
 
 function create(){
@@ -56,11 +60,27 @@ function update(){
 
   if (actionLoop){
     console.log("actionLoop");
+
     kiwi.update();
+
     if (kiwi.hasPoop()){
       // add poop to screen
     }
-    foodBowl = kiwi.eat(foodBowl)
+
+    switch(ticks) {
+    case 'eat':
+        foodBowl = kiwi.eat(foodBowl)
+        ticks = 'drink';
+        break;
+    case 'drink':
+        ticks = 'other'
+        break;
+    case 'other':
+        ticks = 'eat'
+    }
+
+
+    
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
     waterBowlText.text = 'water bowl: ' + waterBowl;
