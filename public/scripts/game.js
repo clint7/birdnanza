@@ -1,4 +1,3 @@
-
 var kiwi;
 var foodBowl;
 var waterBowl;
@@ -6,22 +5,29 @@ var waterBowl;
 var happinessText;
 var foodBowlText;
 var waterBowlText;
+var ageText;
 
 var feedButton;
 var waterButton;
+var playButton;
 
 var ticks;
 
 var kiwi_sprite;
+var smoke;
+
+
+
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
              });
 
 function preload(){
-  // load all sprites and assets here
-  // game.load.image('logo', '/images/logo.png');  
+
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
+  game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
+  game.load.atlasJSONHash('buttons', '../img/buttons.png', '../img/buttons.json');
 
   ticks = "eat";
 }
@@ -34,34 +40,39 @@ function create(){
   foodBowl = 70;
   waterBowl = 70;
 
-  kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-idle.png');
 
-  feedButton = game.add.button(game.world.centerX - 95, 180, 'kiwi_sprite', addFood, this, 'Kiwi-idle.png', 'Kiwi-dead.png', 'Kiwi-angry.png');
+  kiwi_sprite = game.add.sprite(game.world.centerX - 95, 180, 'kiwi_sprite', 'Kiwi-idle.png');
+  
+  // smoke = game.add.sprite(64, 180, 'smoke', 'Smoke1.png');
+  // smoke.animations.add('blow');
+  // smoke.animations.play('blow', 20, false);
 
-  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
-  foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
-  waterBowlText = game.add.text(16, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
+  feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'feed.png', 'feed.png', 'feed.png');
+  waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'water.png', 'water.png', 'water.png');
+
+
+  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
+  foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  waterBowlText = game.add.text(16, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  ageText = game.add.text(16, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
   kiwi = new Pet();
 }
 
 function addFood(){
   foodBowl = 100;
+}
+
+function addWater(){
   waterBowl = 100;
 }
 
-
 function update(){
-
 
   if (kiwi.petState == "dead") {
     return;
   }
 
-  // add them to the page
-  // game.add.sprite(10, 100, 'logo');
-  // game.stage.backgroundColor = '#e7e7e7';
-
-  // each tick update happines by 10 and write to text on screen
+  // each tick update happens by 10 and write to text on screen
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
 
   if (actionLoop){
@@ -75,7 +86,7 @@ function update(){
 
     switch(ticks) {
     case 'eat':
-        var grow = (10 > (Math.random() * (1000 - 1) + 1));
+        var grow = (10 > (Math.random() * (10 - 1) + 1));
         if (grow) {
           kiwi.growUp();
         }
@@ -92,13 +103,14 @@ function update(){
         //some thing else happens here // sleeps maybe? wakes up on next actionLoop?
     }
 
-    if (kiwi.happiness < 100){
-      kiwi.happiness == 100;
+    if (kiwi.happiness > 100){
+      kiwi.happiness = 100;
     }
 
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
     waterBowlText.text = 'water bowl: ' + waterBowl;
+    ageText.text = 'age: ' + kiwi.age;
   }
 
   if (kiwi.happiness < 5) { 
@@ -198,6 +210,7 @@ function Pet(){
 
   this.growUp = function(){
     //do growing stuff here
+    //check to see if state needs to change
     this.age += 1;
   }
 }
