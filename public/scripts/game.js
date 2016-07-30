@@ -1,19 +1,25 @@
+
 var kiwi;
 var foodBowl;
+var waterBowl;
 
+var happinessText;
+var foodBowlText;
+var waterBowlText;
+
+var feedButton;
+var waterButton;
+
+var kiwi_sprite;
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
              });
 
-// variables yo
-var happinessText; //Phaser.text object that displays the text
-var foodBowlText;
-// variables yo
-
 function preload(){
-	// load all sprites and assets here
+  // load all sprites and assets here
   // game.load.image('logo', '/images/logo.png');  
+  game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
 }
 
 function create(){
@@ -21,11 +27,11 @@ function create(){
   // game.add.sprite(10, 100, 'logo');
 
   game.stage.backgroundColor = '#000'; //set background colour
-  foodBowl = 70
+  foodBowl = 70;
+
   kiwi_sprite = game.add.sprite(32, 180, 'kiwi_sprite', 'Kiwi-idle.png');
 
   feedButton = game.add.button(game.world.centerX - 95, 180, 'kiwi_sprite', addFood, this, 'Kiwi-idle.png', 'Kiwi-dead.png', 'Kiwi-angry.png');
-
 
   happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
   foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
@@ -76,7 +82,7 @@ function Pet(){
     return this.petType;
   }
 
-  this.hasPoop(){
+  this.hasPoop = function() {
     if (this.poop > 30){
       this.poop = 0;
       return true;
