@@ -11,12 +11,11 @@ var feedButton;
 var waterButton;
 var playButton;
 
-var waterBowl;
-
 var ticks;
 
 var backgound;
 var kiwi_sprite;
+var water_bowl_sprite;
 var smoke;
 
 
@@ -38,10 +37,10 @@ function preload(){
 
   // game.load.atlasJSONHash('water_bowl', '../img/water_bowl.png', '../img/water_bowl.json');
 
-
+  game.load.atlasJSONHash('bowl', '../img/bowl.png', '../img/bowl.json');
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
   game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
-  game.load.atlasJSONHash('buttons', '../img/buttons.png', '../img/buttons.json');
+  game.load.atlasJSONHash('butts', '../img/buttons1.png', '../img/buttons1.json');
   game.load.atlasJSONHash('worm', '../img/worm.png', '../img/worm.json');
 
   ticks = "eat";
@@ -60,7 +59,7 @@ function create(){
 
   kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
-
+  water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
   
@@ -73,17 +72,22 @@ function create(){
   // smoke.animations.add('blow');
   // smoke.animations.play('blow', 20, false);
 
+  feedButton = game.add.button(10, 180, 'butts', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png')
+  feedButton.scale.setTo(.5, .5)
+  waterButton = game.add.button(10, 250, 'butts', addWater, this, 'Drink-btn-normal.png', 'Drink-btn-normal.png', 'Drink-btn-pressed.png')
+  waterButton.scale.setTo(.5, .5)
+  playButton = game.add.button(10, 320, 'butts', addPlay, this, 'Play-btn-normal.png', 'Play-btn-normal.png', 'Play-btn-pressed.png')
+  playButton.scale.setTo(.5, .5)
 
 
+  // feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png');
+  // waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'Drink-btn-pressed.png', 'Drink-btn-normal.png', 'Drink-btn-pressed.png');
 
-  feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'feed.png', 'feed.png', 'feed.png');
-  waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'water.png', 'water.png', 'water.png');
 
-
-  happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
-  foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
-  waterBowlText = game.add.text(16, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
-  ageText = game.add.text(16, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
+  happinessText = game.add.text(game.width - 330, 10, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
+  foodBowlText = game.add.text(game.width - 330, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  waterBowlText = game.add.text(game.width - 330, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  ageText = game.add.text(game.width - 330, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
 
 
   kiwi = new Pet();
@@ -100,6 +104,10 @@ function addFood(){
 
 function addWater(){
   waterBowl = 100;
+}
+
+function addPlay(){
+  //add play stuff
 }
 
 function update(){
@@ -159,9 +167,20 @@ function update(){
     ageText.text = 'age: ' + kiwi.age;
   }
 
+
+  //update kiwi on happiness
   if (kiwi.happiness < 5) { 
     kiwi_sprite.frameName = 'Kiwi-dead.png';
     kiwi.petState = 'dead'
+  }
+
+  // update water bowl on how much water is left
+  if (waterBowl < 20){
+    water_bowl_sprite.frameName = 'Bowl-1.png'
+  } else if (waterBowl > 20 &&  waterBowl < 60) {
+    water_bowl_sprite.frameName = 'Bowl-2.png'
+  } else if (waterBowl > 61) {
+    water_bowl_sprite.frameName = 'Bowl-3.png'
   }
 }
 

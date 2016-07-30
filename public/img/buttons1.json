@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "Drink-btn-normal.png",
+	"frame": {"x":0,"y":0,"w":348,"h":125},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":125},
+	"sourceSize": {"w":348,"h":125}
+},
+{
+	"filename": "Drink-btn-pressed.png",
+	"frame": {"x":0,"y":125,"w":348,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":115},
+	"sourceSize": {"w":348,"h":115}
+},
+{
+	"filename": "Feed-btn-normal.png",
+	"frame": {"x":0,"y":240,"w":350,"h":125},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":125},
+	"sourceSize": {"w":350,"h":125}
+},
+{
+	"filename": "Feed-btn-pressed.png",
+	"frame": {"x":0,"y":365,"w":350,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":115},
+	"sourceSize": {"w":350,"h":115}
+},
+{
+	"filename": "Play-btn-normal.png",
+	"frame": {"x":0,"y":480,"w":348,"h":125},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":125},
+	"sourceSize": {"w":348,"h":125}
+},
+{
+	"filename": "Play-btn-pressed.png",
+	"frame": {"x":0,"y":605,"w":348,"h":115},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":348,"h":115},
+	"sourceSize": {"w":348,"h":115}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "buttons.png",
+	"format": "RGBA8888",
+	"size": {"w":350,"h":720},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:28e9f2cd4d9f8db10e115dd3f3f8e800:ef544891213c79731e274ff321dd727b:b34c8670b11bb20cb1751a70d3683e22$"
+}
+}
