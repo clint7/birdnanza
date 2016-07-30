@@ -23,6 +23,8 @@ function create(){
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70
 
+  new Button(game, 90, 200, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame)
+
   happinessText = game.add.text(16, 16, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
   foodBowlText = game.add.text(16, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); //create text object, and place on stage
   kiwi = new Pet();
@@ -40,6 +42,9 @@ function update(){
   if (actionLoop){
     console.log("actionLoop");
     kiwi.update();
+    if (kiwi.hasPoop()){
+      // add poop to screen
+    }
     foodBowl = kiwi.eat(foodBowl)
     happinessText.text = 'happiness: ' + kiwi.happiness;
     foodBowlText.text = 'food bowl: ' + foodBowl;
@@ -56,6 +61,15 @@ function Pet(){
   this.poop = 0;
   this.getType = function(){
     return this.petType;
+  }
+
+  this.hasPoop(){
+    if (this.poop > 30){
+      this.poop = 0;
+      return true;
+    }
+
+    return false;
   }
 
   this.update = function(){
@@ -96,22 +110,4 @@ function Pet(){
 
     return food;
   }
-
-  // this.drink = function(water){
-  //   if (water < 10) {
-  //     drink = thirst;
-  //     thirst = thirst - drink
-  //   } else {
-  //     drink = 10
-  //     thirst = thirst - 10;
-  //   }
-
-  //   if (thirst < 10) {
-  //     drink = drink - thirst
-  //     thirst = 0;
-  //   } else {
-  //     thirst = thirst - 10
-  //     water = water - 10;
-  //   return water;
-  // }
 }
