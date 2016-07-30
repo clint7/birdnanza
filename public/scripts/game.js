@@ -130,4 +130,33 @@ function Pet(){
 
     return food;
   }
+
+  this.drink = function(water){
+    var drink = 0;
+
+    if (water == 0){
+      this.thirsty += 5
+      this.happiness -= 30;
+      return water;
+    }
+
+    if (water < 10) {
+      drink = water;
+      water -= water
+    } else {
+      drink = 10
+      water = water - 10;
+    }
+
+    if (this.thirsty < drink) {
+      drink = drink - this.thirsty
+      this.happiness += 40;
+    } else {
+      this.thirsty -= drink
+      this.happiness += 10;
+      this.poop += 5;
+    }
+
+    return water;
+  }
 }
