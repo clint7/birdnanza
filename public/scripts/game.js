@@ -13,6 +13,7 @@ var playButton;
 
 var ticks;
 
+var backgound;
 var kiwi_sprite;
 var smoke;
 
@@ -25,6 +26,8 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight,
 
 function preload(){
 
+  game.load.image('background', '../img/birdnanza_bg.png');
+
   game.load.atlasJSONHash('kiwi_sprite', '../img/kiwi_sprite.png', '../img/kiwi_sprite.json');
   game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
   game.load.atlasJSONHash('buttons', '../img/buttons.png', '../img/buttons.json');
@@ -35,6 +38,9 @@ function preload(){
 function create(){
   // add them to the page
   // game.add.sprite(10, 100, 'logo');
+
+  background = game.add.sprite(0, 0, 'background');
+  background.height = game.height;
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70;
