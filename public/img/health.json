@@ -1,0 +1,100 @@
+{"frames": [
+
+{
+	"filename": "Lifes-00.png",
+	"frame": {"x":0,"y":0,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-01.png",
+	"frame": {"x":0,"y":147,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-02.png",
+	"frame": {"x":0,"y":294,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-03.png",
+	"frame": {"x":0,"y":441,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-04.png",
+	"frame": {"x":0,"y":588,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-05.png",
+	"frame": {"x":0,"y":735,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-06.png",
+	"frame": {"x":0,"y":882,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-07.png",
+	"frame": {"x":0,"y":1029,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-08.png",
+	"frame": {"x":0,"y":1176,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-09.png",
+	"frame": {"x":0,"y":1323,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+},
+{
+	"filename": "Lifes-10.png",
+	"frame": {"x":0,"y":1470,"w":537,"h":147},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":537,"h":147},
+	"sourceSize": {"w":537,"h":147}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "health.png",
+	"format": "RGBA8888",
+	"size": {"w":537,"h":1617},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:50d5ac462d3b8fdae46142175bfe8505:8758a84f096029b1456607629478dd21:4ab86db837ea5a7156439e8a327f2d27$"
+}
+}
