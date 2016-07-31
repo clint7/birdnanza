@@ -60,7 +60,7 @@ function create(){
   healthBar = game.add.sprite(20, 20, 'life', 'Lifes-01.png')
   healthBar.scale.setTo(.5, .5)
   water_bowl_sprite = game.add.sprite(20, game.height - 100, 'bowl', 'Bowl-1.png')
-  kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 520, 'kiwi_sprite', 'Kiwi-idle.png'));
+  kiwi = new Pet(game.add.sprite(game.world.centerX - 245,  game.height - 200, 'kiwi_sprite', 'Kiwi-idle.png'));
   
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
@@ -80,8 +80,8 @@ function create(){
   playButton.scale.setTo(.5, .5)
 
 
-  worms.push(new Worm(game.add.sprite(game.world.centerX + 30, 520, 'worm', 'worm-1.png')));
-  worms.push(new Worm(game.add.sprite(game.world.centerX - 60, 520, 'worm', 'worm-1.png')));
+  worms.push(new Worm(game.add.sprite(game.world.centerX + 30,  game.height - 250, 'worm', 'worm-1.png')));
+  worms.push(new Worm(game.add.sprite(game.world.centerX - 60,  game.height - 250, 'worm', 'worm-1.png')));
 
 
   // feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png');
@@ -108,7 +108,7 @@ function addFood(){
 
   for (var i = 0; worms.length < 3; i++) {
     randomSpawn = Math.round((Math.random() * (60 - 1) + 1));
-    worms.push(new Worm(game.add.sprite(game.world.centerX - 30 + randomSpawn, 520, 'worm', 'worm-1.png')));
+    worms.push(new Worm(game.add.sprite(game.world.centerX - 30 + randomSpawn,  game.height - 250, 'worm', 'worm-1.png')));
   }
 }
 
