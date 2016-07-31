@@ -87,7 +87,8 @@ section {
   background-position: 50% 100%; }
   #About .about-content {
     background-color: #fff;
-    padding-bottom: 50px; }
+    padding-bottom: 50px;
+    padding: 30px; }
 
 #Contact {
   background-color: #9FEBFF; }
