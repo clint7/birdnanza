@@ -20,7 +20,7 @@ var water_bowl_sprite;
 //worm vars
 var worms = [];
 
-var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
+var game = new Phaser.Game(window.innerWidth, window.innerHeight - 95, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
              });
@@ -236,14 +236,18 @@ function doWorm(worm){
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
   if(!worm.wormMove){
     if (worm.leftRight > 2){
-      worm.sprite.scale.x = -1;
+      if (worm.sprite.scale.x > 0){
+        worm.sprite.scale.x *= -1;
+      }
       if (worm.sprite.x < window.screen.availWidth - 60){
         worm.sprite.x += 1
       } else {
         worm.leftRight = 1;
       }
     } else {
-      worm.sprite.scale.x = 1;
+      if (worm.sprite.scale.x < 0){
+        worm.sprite.scale.x *= -1;
+      }
       if (worm.sprite.x > 15){
         worm.sprite.x -= 1
       } else {
@@ -281,6 +285,7 @@ function Worm(sprite){
   this.leftRight = 0;
   this.sprite = sprite;
   this.sprite.anchor.setTo(.5, .5);
+  this.sprite.scale.setTo(.6, .6)
   this.sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 3, true, false);
   this.sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 }
