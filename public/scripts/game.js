@@ -10,6 +10,7 @@ var ageText;
 var feedButton;
 var waterButton;
 var playButton;
+var firstFeed = true;
 
 var ticks;
 
@@ -94,7 +95,11 @@ function create(){
 
 function addFood(){
 
-  $("#foodModal").modal()
+  if (firstFeed){
+    $("#foodModal").modal()
+    firstFeed = false
+  }
+
   foodBowl = 100;
 
   for (var i = 0; worms.length < 3; i++) {
@@ -114,6 +119,7 @@ function addPlay(){
 function update(){
 
   if (kiwi.petState == "dead") {
+    $("#deadModal").modal()
     return;
   }
 
