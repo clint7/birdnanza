@@ -97,4 +97,14 @@ section {
 #Birds {
   background-color: #eeeeee; }
 
+.site-footer {
+  padding: 10px 0;
+  background: #98ef3d;
+  color: #fff;
+  font-weight: bold; }
+  .site-footer a {
+    color: #ed1c24; }
+  .site-footer p {
+    margin-bottom: 0; }
+
 /*# sourceMappingURL=style.css.map */
