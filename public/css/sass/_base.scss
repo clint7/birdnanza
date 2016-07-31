@@ -1,5 +1,6 @@
 section {
-	padding: 30px 0;
+	padding: 30px 0 50px 0;
+
 }
 
 #Video {
@@ -7,3 +8,14 @@ section {
 	background-repeat: no-repeat;
 	background-position: 50% 100%;
 }
+
+#Contact {
+	background-color: $sky-blue;
+}
+
+#Gallery,
+#About {
+	background-color: $grey-bg;
+}
+
+
