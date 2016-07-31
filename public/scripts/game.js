@@ -20,14 +20,14 @@ var water_bowl_sprite;
 //worm vars
 var worms = [];
 
-var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
+var game = new Phaser.Game(window.innerWidth, window.innerHeight - 95, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
              });
 
 function preload(){
 
-  game.load.image('background', '../img/birdnanza_bg.png');
+  game.load.image('background', '../img/birdnanza_bg2.png');
 
   // game.load.atlasJSONHash('water_bowl', '../img/water_bowl.png', '../img/water_bowl.json');
 
@@ -54,8 +54,9 @@ function create(){
   // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
+  water_bowl_sprite = game.add.sprite(20, game.height - 100, 'bowl', 'Bowl-1.png')
   kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 520, 'kiwi_sprite', 'Kiwi-idle.png'));
-  water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
+  
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
   
@@ -92,6 +93,8 @@ function create(){
 }
 
 function addFood(){
+
+  $("#foodModal").modal()
   foodBowl = 100;
 
   for (var i = 0; worms.length < 3; i++) {
@@ -158,6 +161,9 @@ function update(){
         break;
     case 'drink':
         waterBowl = kiwi.drink(waterBowl)
+        // animate the drinking
+
+        
         ticks = 'other'
         break;
     case 'other':
@@ -233,14 +239,18 @@ function doWorm(worm){
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
   if(!worm.wormMove){
     if (worm.leftRight > 2){
-      worm.sprite.scale.x = -1;
+      if (worm.sprite.scale.x > 0){
+        worm.sprite.scale.x *= -1;
+      }
       if (worm.sprite.x < window.screen.availWidth - 60){
         worm.sprite.x += 1
       } else {
         worm.leftRight = 1;
       }
     } else {
-      worm.sprite.scale.x = 1;
+      if (worm.sprite.scale.x < 0){
+        worm.sprite.scale.x *= -1;
+      }
       if (worm.sprite.x > 15){
         worm.sprite.x -= 1
       } else {
@@ -278,6 +288,7 @@ function Worm(sprite){
   this.leftRight = 0;
   this.sprite = sprite;
   this.sprite.anchor.setTo(.5, .5);
+  this.sprite.scale.setTo(.6, .6)
   this.sprite.animations.add('walking', ['worm-1.png', 'worm-2.png'], 3, true, false);
   this.sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 }
