@@ -14,17 +14,11 @@ var playButton;
 var ticks;
 
 var backgound;
-var kiwi_sprite;
+// var kiwi_sprite;
 var water_bowl_sprite;
-var smoke;
-
 
 //worm vars
 var worms = [];
-var worm;
-var wormMove = true;
-var leftRight = 0
-
 
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
                              Phaser.AUTO, 'sweetGame', {
@@ -57,8 +51,10 @@ function create(){
   foodBowl = 70;
   waterBowl = 70;
 
-  kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
+  // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
+  
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
+  kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 460, 'kiwi_sprite', 'Kiwi-idle.png'));
   water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
@@ -68,8 +64,6 @@ function create(){
   // worm_sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 
 
-  // smoke = game.add.sprite(64, 180, 'smoke', 'Smoke1.png');
-  // smoke.animations.add('blow');
   // smoke.animations.play('blow', 20, false);
 
   feedButton = game.add.button(10, 180, 'butts', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png')
@@ -80,17 +74,21 @@ function create(){
   playButton.scale.setTo(.5, .5)
 
 
+  worms.push(new Worm(game.add.sprite(game.world.centerX + 30, 520, 'worm', 'worm-1.png')));
+  worms.push(new Worm(game.add.sprite(game.world.centerX - 60, 520, 'worm', 'worm-1.png')));
+
+
   // feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png');
   // waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'Drink-btn-pressed.png', 'Drink-btn-normal.png', 'Drink-btn-pressed.png');
-
 
   happinessText = game.add.text(game.width - 330, 10, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
   foodBowlText = game.add.text(game.width - 330, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
   waterBowlText = game.add.text(game.width - 330, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
   ageText = game.add.text(game.width - 330, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
 
+// kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
+ 
 
-  kiwi = new Pet();
 }
 
 function addFood(){
@@ -116,14 +114,13 @@ function update(){
     return;
   }
 
-    // worm_sprite.animations.play('walking');
-
-
   //worm movement
   for (var i = worms.length - 1; i >= 0; i--) {
     doWorm(worms[i])
   }
   // doWorm();
+
+  doPetMove(kiwi);
 
 
   // each tick update happens by 10 and write to text on screen
@@ -145,6 +142,18 @@ function update(){
           kiwi.growUp();
         }
         foodBowl = kiwi.eat(foodBowl)
+        if (foodBowl < 65 && worms.length > 2){
+          killWorm();
+        }
+
+        if (foodBowl < 35 && worms.length > 1){
+          killWorm();
+        }
+
+        if (foodBowl < 5 && worms.length > 0){
+          killWorm();
+        }
+
         ticks = 'drink';
         break;
     case 'drink':
@@ -170,7 +179,7 @@ function update(){
 
   //update kiwi on happiness
   if (kiwi.happiness < 5) { 
-    kiwi_sprite.frameName = 'Kiwi-dead.png';
+    kiwi.sprite.frameName = 'Kiwi-dead.png';
     kiwi.petState = 'dead'
   }
 
@@ -184,11 +193,41 @@ function update(){
   }
 }
 
+function doPetMove(pet){
+  var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
+  if(!pet.shouldMove){
+    if (pet.leftRight > 2){
+      pet.sprite.scale.x = 1;
+      if (pet.sprite.x < window.screen.availWidth - 60){
+        pet.sprite.x += 1
+      } else {
+        pet.leftRight = 1;
+      }
+    } else {
+      pet.sprite.scale.x = -1;
+      if (pet.sprite.x > 15){
+        pet.sprite.x -= 1
+      } else {
+        pet.leftRight = 3;
+      }
+    }
+  }
+
+  if (actionLoop){
+    if (kiwi.shouldMove) {
+      kiwi.shouldMove = false;
+      kiwi.leftRight = Math.round((Math.random() * (4 - 1) + 1));
+      // kiwi.sprite.animations.play('walking');
+    } else {
+      kiwi.shouldMove = true;
+      // worm.sprite.animations.play('stoped');
+    }
+  }
+}
+
 function doWorm(worm){
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
   if(!worm.wormMove){
-    console.log(worm)
-    // console.log(worm.leftRight);
     if (worm.leftRight > 2){
       worm.sprite.scale.x = -1;
       if (worm.sprite.x < window.screen.availWidth - 60){
@@ -219,6 +258,17 @@ function doWorm(worm){
 
 }
 
+function killWorm(){
+  var deadWorm = worms[0]
+  worms.splice(0, 1);
+  var smoke = game.add.sprite(deadWorm.sprite.x, deadWorm.sprite.y, 'smoke', 'Smoke1.png');
+  var smokeAm = smoke.animations.add('eat_worm', ['Smoke1.png','Smoke2.png','Smoke3.png','Smoke4.png','Smoke5.png','Smoke6.png'], 7, false, true);
+  smoke.anchor.setTo(.5, .5);
+  smokeAm.killOnComplete = true;
+  deadWorm.sprite.destroy()
+  smoke.animations.play('eat_worm');
+}
+
 function Worm(sprite){
   this.wormMove = true;
   this.leftRight = 0;
@@ -228,7 +278,7 @@ function Worm(sprite){
   this.sprite.animations.add('stoped', ['worm-1.png', 'worm-1.png'], 3, true, false);
 }
 
-function Pet(){
+function Pet(sprite){
   this.petType = 'kiwi';
   this.petState = 'egg';
   this.happiness = 50;
@@ -236,6 +286,10 @@ function Pet(){
   this.thirst = 0;
   this.age = 0;
   this.poop = 0;
+  this.shouldMove = false;
+  this.leftRight = 0;
+  this.sprite = sprite
+  this.sprite.anchor.setTo(.5, .5);
   this.getType = function(){
     return this.petType;
   }
