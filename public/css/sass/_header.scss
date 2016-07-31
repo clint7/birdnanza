@@ -1,0 +1,52 @@
+/*===================================
+=            site header            =
+===================================*/
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-brand {
+	height: auto;
+}
+
+.navbar-default {
+	border: none;
+	background: transparent;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+	outline: none;
+	color: #fff;
+}
+
+.navbar-right {
+	padding-top: 20px;
+}
+
+.logo {
+	max-width: 300px;
+}
+
+.site-header {
+	background-image: url(/img/banner-bg.jpg);
+	background-size: cover;
+	background-position: 50%;
+	padding-bottom: 30px;
+}
+
+.game-info-content {
+	padding: 60px 0;
+	color: #fff;
+}
+
+.game-info-content > img {
+	margin-bottom: 30px;
+}
+
+.game-info-content .btn:last-child {
+	margin-top: 20px;
+}
+
+/*=====  End of site header  ======*/
