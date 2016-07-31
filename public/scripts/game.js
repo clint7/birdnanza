@@ -1,6 +1,7 @@
 var kiwi;
 var foodBowl;
 var waterBowl;
+var healthBar;
 
 var happinessText;
 var foodBowlText;
@@ -37,6 +38,7 @@ function preload(){
   game.load.atlasJSONHash('smoke', '../img/smoke.png', '../img/smoke.json');
   game.load.atlasJSONHash('butts', '../img/buttons1.png', '../img/buttons1.json');
   game.load.atlasJSONHash('worm', '../img/worm.png', '../img/worm.json');
+  game.load.atlasJSONHash('life', '../img/health.png', '../img/health.json');
 
   ticks = "eat";
 }
@@ -55,6 +57,8 @@ function create(){
   // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
+  healthBar = game.add.sprite(20, 20, 'life', 'Lifes-01.png')
+  healthBar.scale.setTo(.5, .5)
   water_bowl_sprite = game.add.sprite(20, game.height - 100, 'bowl', 'Bowl-1.png')
   kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 520, 'kiwi_sprite', 'Kiwi-idle.png'));
   
@@ -83,10 +87,10 @@ function create(){
   // feedButton = game.add.button(10, 180, 'buttons', addFood, this, 'Feed-btn-normal.png', 'Feed-btn-normal.png', 'Feed-btn-pressed.png');
   // waterButton = game.add.button(10, 280, 'buttons', addWater, this, 'Drink-btn-pressed.png', 'Drink-btn-normal.png', 'Drink-btn-pressed.png');
 
-  happinessText = game.add.text(game.width - 330, 10, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
-  foodBowlText = game.add.text(game.width - 330, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
-  waterBowlText = game.add.text(game.width - 330, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
-  ageText = game.add.text(game.width - 330, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
+  // happinessText = game.add.text(game.width - 330, 10, 'happiness: ' + 50, { fontSize: '32px', fill: '#e7e7e7' }); 
+  // foodBowlText = game.add.text(game.width - 330, 64, 'food bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  // waterBowlText = game.add.text(game.width - 330, 120, 'water bowl: ' + foodBowl, { fontSize: '32px', fill: '#e7e7e7' }); 
+  // ageText = game.add.text(game.width - 330, 150, 'Age: ', { fontSize: '32px', fill: '#e7e7e7' }); 
 
 // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
  
@@ -122,6 +126,32 @@ function update(){
     $("#deadModal").modal()
     return;
   }
+
+  //health bar
+  if (kiwi.happiness > 0 && kiwi.happiness < 10) {
+    healthBar.frameName = 'Lifes-00.png'
+  } else if (kiwi.happiness > 11 &&  kiwi.happiness < 20) {
+    healthBar.frameName = 'Lifes-01.png'
+  } else if (kiwi.happiness > 11 &&  kiwi.happiness < 20) {
+    healthBar.frameName = 'Lifes-02.png'
+  } else if (kiwi.happiness > 21 &&  kiwi.happiness < 30) {
+    healthBar.frameName = 'Lifes-03.png'
+  } else if (kiwi.happiness > 31 &&  kiwi.happiness < 40) {
+    healthBar.frameName = 'Lifes-04.png'
+  } else if (kiwi.happiness > 41 &&  kiwi.happiness < 50) {
+    healthBar.frameName = 'Lifes-05.png'
+  } else if (kiwi.happiness > 51 &&  kiwi.happiness < 60) {
+    healthBar.frameName = 'Lifes-06.png'
+  } else if (kiwi.happiness > 61 &&  kiwi.happiness < 70) {
+    healthBar.frameName = 'Lifes-07.png'
+  } else if (kiwi.happiness > 71 &&  kiwi.happiness < 80) {
+    healthBar.frameName = 'Lifes-08.png'
+  } else if (kiwi.happiness > 81 &&  kiwi.happiness < 90) {
+    healthBar.frameName = 'Lifes-09.png'
+  } else if (kiwi.happiness > 91 &&  kiwi.happiness < 100) {
+    healthBar.frameName = 'Lifes-10.png'
+  }
+
 
   //worm movement
   for (var i = worms.length - 1; i >= 0; i--) {
@@ -182,10 +212,10 @@ function update(){
       kiwi.happiness = 100;
     }
 
-    happinessText.text = 'happiness: ' + kiwi.happiness;
-    foodBowlText.text = 'food bowl: ' + foodBowl;
-    waterBowlText.text = 'water bowl: ' + waterBowl;
-    ageText.text = 'age: ' + kiwi.age;
+    // happinessText.text = 'happiness: ' + kiwi.happiness;
+    // foodBowlText.text = 'food bowl: ' + foodBowl;
+    // waterBowlText.text = 'water bowl: ' + waterBowl;
+    // ageText.text = 'age: ' + kiwi.age;
   }
 
 
