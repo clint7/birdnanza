@@ -48,7 +48,7 @@ function create(){
   // game.add.sprite(10, 100, 'logo');
 
   background = game.add.sprite(0, -200, 'background');
-  // background.height = game.height;
+  background.height = game.height + 300;
 
   game.stage.backgroundColor = '#000'; //set background colour
   foodBowl = 70;
