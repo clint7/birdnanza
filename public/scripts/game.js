@@ -149,6 +149,9 @@ function update(){
         break;
     case 'drink':
         waterBowl = kiwi.drink(waterBowl)
+        // animate the drinking
+
+        
         ticks = 'other'
         break;
     case 'other':
