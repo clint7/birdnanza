@@ -27,7 +27,7 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight - 95,
 
 function preload(){
 
-  game.load.image('background', '../img/birdnanza_bg.png');
+  game.load.image('background', '../img/birdnanza_bg2.png');
 
   // game.load.atlasJSONHash('water_bowl', '../img/water_bowl.png', '../img/water_bowl.json');
 
@@ -54,8 +54,9 @@ function create(){
   // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
+  water_bowl_sprite = game.add.sprite(20, game.height - 100, 'bowl', 'Bowl-1.png')
   kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 520, 'kiwi_sprite', 'Kiwi-idle.png'));
-  water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
+  
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
   
@@ -160,6 +161,9 @@ function update(){
         break;
     case 'drink':
         waterBowl = kiwi.drink(waterBowl)
+        // animate the drinking
+
+        
         ticks = 'other'
         break;
     case 'other':
