@@ -5,6 +5,6 @@ jQuery(document).ready(function($) {
 	$("a[rel='scroll']").mPageScroll2id();
 
 	// video lightbox
-	$('.swipebox-video').swipebox();
+	// $('.swipebox-video').swipebox();
 });
 
