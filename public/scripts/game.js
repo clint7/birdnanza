@@ -20,7 +20,7 @@ var water_bowl_sprite;
 //worm vars
 var worms = [];
 
-var game = new Phaser.Game(window.innerWidth, window.innerHeight, 
+var game = new Phaser.Game(window.innerWidth, window.innerHeight - 95, 
                              Phaser.AUTO, 'sweetGame', {
                  preload: preload, create: create, update: update
              });
