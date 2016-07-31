@@ -1,7 +1,31 @@
-.btn-red, .btn-red:hover, .btn-red:focus {
-  background-color: #ed1c24;
+.btn-red,
+.btn-red:hover,
+.btn-red:focus {
+  background-color: #ed1c24; }
+
+.btn-green,
+.btn-green:hover,
+.btn-green:focus {
+  background-color: #98ef3d; }
+
+.btn,
+.btn:hover,
+.btn:focus {
   color: white;
   outline: none; }
+
+.btn-round {
+  border-radius: 30px; }
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+  height: 3px; }
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  border: none;
+  background-color: transparent; }
 
 body {
   font-size: 16px; }
@@ -61,6 +85,9 @@ section {
   background-image: url(/img/tree-bg.png);
   background-repeat: no-repeat;
   background-position: 50% 100%; }
+
+#Contact {
+  background-color: #9FEBFF; }
 
 #Gallery,
 #About {
