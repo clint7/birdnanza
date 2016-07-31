@@ -54,7 +54,7 @@ function create(){
   // kiwi_sprite = game.add.sprite(game.world.centerX - 245, 350, 'kiwi_sprite', 'Kiwi-idle.png');
   
   // worm_sprite = game.add.sprite(game.world.centerX + 95, 520, 'worm', 'worm-1.png');
-  kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 460, 'kiwi_sprite', 'Kiwi-idle.png'));
+  kiwi = new Pet(game.add.sprite(game.world.centerX - 245, 520, 'kiwi_sprite', 'Kiwi-idle.png'));
   water_bowl_sprite = game.add.sprite(20, 440, 'bowl', 'Bowl-1.png')
   // worms.push(new Worm(worm_sprite));
   // worm_sprite.anchor.setTo(.5, .5);
@@ -197,14 +197,18 @@ function doPetMove(pet){
   var actionLoop = (10 > (Math.random() * (1000 - 1) + 1));
   if(!pet.shouldMove){
     if (pet.leftRight > 2){
-      pet.sprite.scale.x = 1;
+      if (pet.sprite.scale.x < 0){
+        pet.sprite.scale.x *= -1;
+      }
       if (pet.sprite.x < window.screen.availWidth - 60){
         pet.sprite.x += 1
       } else {
         pet.leftRight = 1;
       }
     } else {
-      pet.sprite.scale.x = -1;
+      if (pet.sprite.scale.x > 0){
+        pet.sprite.scale.x *= -1;
+      }
       if (pet.sprite.x > 15){
         pet.sprite.x -= 1
       } else {
@@ -289,6 +293,8 @@ function Pet(sprite){
   this.shouldMove = false;
   this.leftRight = 0;
   this.sprite = sprite
+  this.sprite.scale.x = 0.7
+  this.sprite.scale.y = 0.7
   this.sprite.anchor.setTo(.5, .5);
   this.getType = function(){
     return this.petType;
@@ -375,5 +381,27 @@ function Pet(sprite){
     //do growing stuff here
     //check to see if state needs to change
     this.age += 1;
+    if (this.age > 5 && this.age < 10){
+      this.state = "young"
+      this.sprite.scale.setTo(.8, .8)
+      return
+    }
+
+    if (this.age > 10 && this.age < 15){
+      this.state = "middle"
+      this.sprite.scale.setTo(.9, .9)
+      return
+    }
+
+    if (this.age > 15 && this.age < 20){
+      this.state = "old"
+      this.sprite.scale.setTo(1, 1)
+      return
+    }
+
+    if (this.age > 20){
+      this.state = "letgo"
+      return
+    }
   }
 }
