@@ -5,10 +5,13 @@
 	<script type="text/javascript" src="/scripts/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/scripts/pageScrollToId.min.js"></script>
+	<script type="text/javascript" src="/scripts/jquery.swipebox.min.js"></script>
 	<script type="text/javascript" src="/scripts/phaser.min.js"></script>
   <script type="text/javascript" src="/scripts/game.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/swipebox.min.css">
+
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
@@ -33,7 +36,6 @@
 		      <ul class="nav navbar-nav navbar-right">
 		      	<li><a href="/play.html">Play Game</a></li>
 		        <li><a href="index.html#About" rel="scroll">About</a></li>
-		        <li><a href="/#Video" rel="scroll">Video</a></li>
 		        <li><a href="/#Gallery" rel="scroll">Gallery</a></li>
 		        <li><a href="/#Contact" rel="scroll">Contact</a></li>
 		      </ul>
@@ -73,19 +75,25 @@
 					<p>Hatch an egg and get started today.</p>
 				</div>
 				<div class="col-sm-6">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=66&txt=700%C3%97400&w=700&h=400" alt="" class="img-responsive">
+					<a class="swipebox-video" href="http://vimeo.com/29193046">
+						<img src="/img/Jteve-Sobs-Placeholder.jpg" alt="Watch Video" class="img-responsive">
+					</a>
+
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- end about section -->
 
-	<!-- video section -->
-	<section id="Video">
-		<h1 class="section-heading text-center">Watch the Video</h1>
-		<iframe width="560" height="315" class="center-block" src="https://www.youtube.com/embed/Ij9jm6ZcJv0" frameborder="0" allowfullscreen></iframe>
+	<!-- birds section -->
+	<section id="Birds">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8"></div>
+				<div class="col-sm-4"></div>
+			</div>
+		</div>
 	</section>
-	<!-- end video section -->
 
 	<!-- gallery seciton -->
 	<section class="" id="Gallery">
@@ -123,7 +131,7 @@
 	</section>
 	<!-- end gallery -->
 
-	<!-- donate section -->
+	<!-- contact section -->
 	<section id="Contact">
 		<div class="container">
 			<h1 class="section-heading">Contact</h1>
@@ -183,7 +191,7 @@
 			</div> <!-- /.row-->
 		</div>
 	</section>
-	<!-- end donate section -->
+	<!-- end contact section -->
 
 
 

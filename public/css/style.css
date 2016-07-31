@@ -81,7 +81,7 @@ body {
 section {
   padding: 30px 0 50px 0; }
 
-#Video {
+#About {
   background-image: url(/img/tree-bg.png);
   background-repeat: no-repeat;
   background-position: 50% 100%; }
@@ -90,7 +90,7 @@ section {
   background-color: #9FEBFF; }
 
 #Gallery,
-#About {
+#Birds {
   background-color: #eeeeee; }
 
 /*# sourceMappingURL=style.css.map */
