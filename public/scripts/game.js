@@ -97,6 +97,8 @@ function create(){
 }
 
 function addFood(){
+
+  $("#foodModal").modal()
   foodBowl = 100;
 
   for (var i = 0; worms.length < 3; i++) {
